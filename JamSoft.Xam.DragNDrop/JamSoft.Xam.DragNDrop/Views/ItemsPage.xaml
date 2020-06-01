@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:customControls="clr-namespace:JamSoft.Xam.DragNDrop.CustomControls;assembly=JamSoft.Xam.DragNDrop"
+             mc:Ignorable="d"
+             x:Class="JamSoft.Xam.DragNDrop.Views.ItemsPage"
+             Title="{Binding Title}"
+             x:Name="BrowseItemsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <customControls:CustomScrollView x:Name="OverviewScrollView" Orientation="Horizontal">
+
+        <StackLayout Orientation="Horizontal" BackgroundColor="CornflowerBlue" Spacing="10">
+
+            <!--<StackLayout WidthRequest="350">-->
+            <!--<RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">-->
+            <customControls:DragAndDropListView x:Name="ItemsListView" Host="{x:Reference Name=OverviewScrollView}"  WidthRequest="350" SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding Items, Mode=TwoWay}">
+                    <customControls:DragAndDropListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Margin="10" Padding="10" Orientation="Horizontal" BackgroundColor="Bisque">
+                                    <Label  Text="{Binding Position}" FontSize="30" VerticalTextAlignment="Center" />
+                                    <Label Text="{Binding Text}" VerticalTextAlignment="Center" LineBreakMode="NoWrap" FontSize="16" />
+                                    <Label Text="{Binding Description}" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" LineBreakMode="NoWrap" FontSize="13" />
+                                    <!--<StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnItemSelected"></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>-->
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </customControls:DragAndDropListView.ItemTemplate>
+                </customControls:DragAndDropListView>
+            <!--</StackLayout>-->
+
+            <!--<StackLayout WidthRequest="350">-->
+                <customControls:DragAndDropListView x:Name="ItemsListView2" WidthRequest="350" SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding Items2, Mode=TwoWay}">
+                    <customControls:DragAndDropListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Margin="10" Padding="10" Orientation="Horizontal" BackgroundColor="Bisque">
+                                    <Label  Text="{Binding Position}" FontSize="30" VerticalTextAlignment="Center" />
+                                    <Label Text="{Binding Text}" VerticalTextAlignment="Center" LineBreakMode="NoWrap" FontSize="16" />
+                                    <Label Text="{Binding Description}" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" LineBreakMode="NoWrap" FontSize="13" />
+                                    <!--<StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnItemSelected"></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>-->
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </customControls:DragAndDropListView.ItemTemplate>
+                </customControls:DragAndDropListView>
+            <!--</StackLayout>-->
+            <!--</RefreshView>-->
+        </StackLayout>
+    </customControls:CustomScrollView>
+
+</ContentPage>
